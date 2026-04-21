@@ -1,0 +1,153 @@
+:root {
+  color-scheme: dark;
+  font-family: "IBM Plex Sans", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --color-background: #080808;
+  --color-panel: rgba(18, 18, 18, 0.94);
+  --color-border: rgba(255, 255, 255, 0.14);
+  --color-text: rgba(255, 255, 255, 0.94);
+  --color-text-muted: rgba(255, 255, 255, 0.64);
+  --color-button-primary: #f2f2ef;
+  --color-button-primary-text: #111111;
+  --color-button-secondary: rgba(255, 255, 255, 0.08);
+  --color-button-secondary-text: rgba(255, 255, 255, 0.9);
+  --shadow-panel: 0 18px 48px rgba(0, 0, 0, 0.28);
+  --radius-panel: 18px;
+  --radius-button: 100vmax;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --focus-scale: 1.03;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top, rgba(112, 116, 129, 0.18), transparent 34%),
+    linear-gradient(180deg, #121212 0%, #080808 55%, #040404 100%);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+body,
+h1,
+p {
+  margin: 0;
+}
+
+button,
+input,
+label {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+button,
+label {
+  cursor: pointer;
+}
+
+img,
+svg {
+  display: block;
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+.button {
+  min-height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-button);
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    border-radius 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.button:focus-visible,
+.uploader:focus-within {
+  transform: scale(var(--focus-scale));
+  border-radius: 1rem;
+}
+
+@media (any-hover: hover) {
+  .button:hover,
+  .uploader:hover {
+    transform: scale(var(--focus-scale));
+    border-radius: 1rem;
+  }
+}
+
+.button--primary {
+  background: var(--color-button-primary);
+  color: var(--color-button-primary-text);
+}
+
+.button--secondary {
+  background: var(--color-button-secondary);
+  color: var(--color-button-secondary-text);
+  backdrop-filter: blur(12px);
+}
+
+.button__label {
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+
+.uploader {
+  position: relative;
+  overflow: clip;
+}
+
+.uploader__input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.app-icon {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+
+@media (width <= 640px) {
+  .layout {
+    padding: var(--space-3);
+  }
+
+  .button {
+    min-height: 2.35rem;
+    padding: 0 var(--space-3);
+  }
+}
